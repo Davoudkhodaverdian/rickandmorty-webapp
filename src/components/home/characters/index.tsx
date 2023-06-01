@@ -1,30 +1,50 @@
 import React from "react";
 // Import everything needed to use the `useQuery` hook
 import { useQuery, gql } from '@apollo/client';
-import { Character } from "../../../app/models/character";
+import Loading from "../../shared/loading";
+import { Pagination } from "@mui/material";
+import Search from "./search";
+import { useMemo } from 'react';
+import Items from "./items";
+// interface Props {
+//     pagesCount: number
+// }
 
 const Characters: React.FC = () => {
+    const [page, setPage] = React.useState(1);
+    const [search, setSearch] = React.useState('');
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
     const GET_CHARACTERS = gql(`query GetCharacters {
-        characters {
+        characters(page:${page}${search ? ', filter: {name: "' + search + '"}' : ''}) {
             results {name,image,id,status,species,type,gender,created}
+            info {pages,count}
         }
     }`);
     const { loading, error, data } = useQuery(GET_CHARACTERS);
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
-    console.log(data);
-    return (
-        <div className="">
-            {
-                data?.characters?.results.map(({ id, name, image }: Character) => (
-                    <div key={id}>
-                        <h3>{name}</h3>
-                        <img width="400" height="250" alt={name} src={`${image}`} />
-                        <br />
+    const pagesCount = data?.characters?.info?.pages;
 
-                    </div>
-                ))
-            }
+    console.log(data);
+
+    return (
+        <div>
+            <div className=" md:max-w-[1000px] m-auto px-5 py-6">
+                <div className="my-3">find your favorite character</div>
+                <div>
+                    <Search setSearch={setSearch} setPage={setPage} />
+                </div>
+                {
+                    loading ? <div className="h-[500px]"><Loading /> </div> :
+                        <div className="grid grid-cols-3 overflow-auto h-[500px]">
+                            <Items data={data?.characters?.results} />
+                        </div>
+                }
+                <div className="m-5">
+                    <Pagination count={pagesCount} page={page} onChange={handleChange} />
+                </div>
+            </div>
         </div>
     )
 }

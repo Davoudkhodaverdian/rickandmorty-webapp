@@ -20,9 +20,7 @@ const Locations: React.FC = () => {
                 data?.locations?.results.map(({ id, name }: Location) => (
                     <div key={id}>
                         <h3>{name}</h3>
-                        
                         <br />
-
                     </div>
                 ))
             }

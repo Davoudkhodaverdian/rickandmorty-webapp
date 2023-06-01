@@ -3,13 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/home';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
-const client = new ApolloClient({
-  // uri: 'https://flyby-router-demo.herokuapp.com/',
-  uri: 'https://rickandmortyapi.com/graphql',
-  cache: new InMemoryCache(),
-});
+import {  ApolloProvider } from '@apollo/client';
+import client from "./app/apollo/client";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
