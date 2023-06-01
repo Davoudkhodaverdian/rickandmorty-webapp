@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     if (error) return <p>Error : {error.message}</p>;
 
     return (
-        <div>
+        <div className="m-6">
             <div>home page</div>
             <div>rick and morty web application</div>
             {
