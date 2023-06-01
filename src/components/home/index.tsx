@@ -4,7 +4,10 @@ const Home : React.FC = ()=>{
 
 
     return  (
-        <div>home page</div>
+        <div>
+            <div>home page</div>
+            <div>rick and morty web application</div>
+        </div>
     )
 }
 
