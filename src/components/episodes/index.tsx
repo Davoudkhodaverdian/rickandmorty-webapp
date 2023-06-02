@@ -13,10 +13,10 @@ const Episodes: React.FC = () => {
     const { loading, error, data } = useQuery(GET_EPISODES);
     if (loading) return <Loading />;
     if (error) {
-        console.log(error.message)
+        // console.log(error.message)
         return <p></p>;
     }
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="">

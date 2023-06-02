@@ -18,10 +18,10 @@ const Character: React.FC = () => {
 
     const { loading, error, data } = useQuery(GET_CHARACTERSBYID);
     if (error) {
-        console.log(error.message)
+        // console.log(error.message)
         return <p></p>;
     }
-    console.log(data);
+    // console.log(data);
     if (data?.charactersByIds?.length === 0) {
         //not found
         navigate('/404', { replace: true });
