@@ -17,7 +17,10 @@ const Character: React.FC = () => {
     }`);
 
     const { loading, error, data } = useQuery(GET_CHARACTERSBYID);
-    if (error) return <p>Error : {error.message}</p>;
+    if (error) {
+        console.log(error.message)
+        return <p></p>;
+    }
     console.log(data);
     if (data?.charactersByIds?.length === 0) {
         //not found
@@ -28,8 +31,8 @@ const Character: React.FC = () => {
             {
                 loading ? <div className="h-[500px]"><Loading /> </div> :
 
-                    data?.charactersByIds?.map(({ image, name, episode, origin, location }: ICharacter) => (
-                        <div>
+                    data?.charactersByIds?.map(({ image, name, episode, origin, location,id }: ICharacter) => (
+                        <div key={id}>
                             <img className="rounded " alt={name} src={`${image}`} />
                             <div>
                                 name character: {name}

@@ -1,5 +1,5 @@
 import { SwipeableDrawer } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -20,10 +20,8 @@ const DrawerMui: React.FC<Props> = ({ setOpen, open }) => {
                 ) {
                     return;
                 }
-
                 setOpen(open);
             };
-
 
     return (
         <SwipeableDrawer
@@ -40,7 +38,7 @@ const DrawerMui: React.FC<Props> = ({ setOpen, open }) => {
                 <div className="rounded py-3 flex flex-col">
                     <Link className="p-3 px-6" to={``}> <span>home</span></Link>
                     <Link className="p-3 px-6" to={`locations`}><span>locations</span></Link>
-                    <Link className="p-3 px-6" to={`episodes`}><span>locations</span></Link>
+                    <Link className="p-3 px-6" to={`episodes`}><span>episodes</span></Link>
                 </div>
             </div>
         </SwipeableDrawer>

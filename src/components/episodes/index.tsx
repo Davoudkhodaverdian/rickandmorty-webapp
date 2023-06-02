@@ -1,20 +1,21 @@
 import React from "react";
 // Import everything needed to use the `useQuery` hook
 import { useQuery, gql } from '@apollo/client';
-import { Location } from "../../app/models/location";
 import { Episode } from "../../app/models/episode";
 import Loading from "../shared/loading";
-import { Character } from "../../app/models/character";
 
 const Episodes: React.FC = () => {
     const GET_EPISODES = gql(`query GetEpisodes {
         episodes {
-            results {name,episode,created,characters{image,name,id}}
+            results {name,id,episode,created,characters{image,name,id}}
         }
     }`);
     const { loading, error, data } = useQuery(GET_EPISODES);
     if (loading) return <Loading />;
-    if (error) return <p>Error : {error.message}</p>;
+    if (error) {
+        console.log(error.message)
+        return <p></p>;
+    }
     console.log(data);
 
     return (
@@ -27,19 +28,6 @@ const Episodes: React.FC = () => {
                             <div>episode :{episode}</div>
                             <div>created :{created}</div>
                             <br />
-                            {/* <div className='p-2'>List of characters who have been seen in the episode</div>
-                            <div>
-                                {
-                                    characters?.map(({ image, name,id }: Character) => (
-                                        <div className="flex" key={id}>
-                                            <div>
-                                                <img className="rounded " alt={name} src={`${image}`} />
-                                            </div>
-                                            <div>{name}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div> */}
                         </div>
                     ))
                 }

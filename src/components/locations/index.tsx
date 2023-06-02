@@ -12,7 +12,10 @@ const Locations: React.FC = () => {
     }`);
     const { loading, error, data } = useQuery(GET_LOCATIONS);
     if (loading) return <Loading />;
-    if (error) return <p>Error : {error.message}</p>;
+    if (error) {
+        console.log(error.message)
+        return <p></p>;
+    }
     console.log(data);
 
     return (

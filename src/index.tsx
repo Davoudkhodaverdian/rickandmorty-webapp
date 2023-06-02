@@ -11,25 +11,30 @@ import Character from './components/character';
 import NotFound from './components/shared/notFound';
 import Locations from './components/locations';
 import Episodes from './components/episodes';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='character/:slug' element={<Character />} />
-            <Route path='/locations' element={<Locations/>} />
-            <Route path='/episodes' element={<Episodes/>} />
-          </Route>
-          <Route path='*' element={<NotFound />} />
-          <Route path='/404' element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path='character/:slug' element={<Character />} />
+              <Route path='/locations' element={<Locations />} />
+              <Route path='/episodes' element={<Episodes />} />
+            </Route>
+            <Route path='*' element={<NotFound />} />
+            <Route path='/404' element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>
 );
 

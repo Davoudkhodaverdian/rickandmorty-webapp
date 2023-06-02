@@ -1,14 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setPage, setSearch } from "../../../../app/store/slices/charactersList";
 
-interface Props {
-    setSearch: React.Dispatch<React.SetStateAction<string>>
-    setPage: React.Dispatch<React.SetStateAction<number>>
-}
+const Search: React.FC = () => {
 
-const Search: React.FC<Props> = ({ setSearch,setPage }) => {
+    const dispatch = useDispatch();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPage(1);
-        setSearch(event.target.value);
+        dispatch(setPage(1));
+        dispatch(setSearch(event.target.value));
     }
     return (
         <form className="mb-5 mx-auto">

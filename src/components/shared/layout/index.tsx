@@ -16,7 +16,7 @@ const Layout = () => {
                 <div className="hidden md:block rounded p-3">
                     <Link className="p-3" to={``}> <span>home</span></Link>
                     <Link className="p-3" to={`locations`}><span>locations</span></Link>
-                    <Link className="p-3" to={`episodes`}><span>locations</span></Link>
+                    <Link className="p-3" to={`episodes`}><span>episodes</span></Link>
                 </div>
                 <div className="block md:hidden cursor-pointer transition-all ">
                     <DrawerMui open={open} setOpen={setOpen} />
