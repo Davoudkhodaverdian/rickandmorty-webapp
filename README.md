@@ -1,7 +1,7 @@
 # Rick and Morty Web Application
 
 
-![rick-and-morty.](/images/rick-and-morty.webp)\
+![rick-and-morty.](/public/images/rick-and-morty.webp)\
 In this web application you can search every character in the animation.\
 You can click on every character you find and see more information about it.
 
