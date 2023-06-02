@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Import everything needed to use the `useQuery` hook
 import { useQuery, gql } from '@apollo/client';
 import Loading from "../../shared/loading";
@@ -12,16 +12,16 @@ import { setPage } from "../../../app/store/slices/charactersList";
 
 const Characters: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    // const [page, setPage] = React.useState(Number(searchParams.get('page')) || 1);
-    // const [search, setSearch] = React.useState('');
     const page = useSelector((state: RootState) => state.charactersList.page);
     const search = useSelector((state: RootState) => state.charactersList.search);
     const dispatch = useDispatch();
-    if (Number(searchParams.get('page')))  dispatch(setPage(Number(searchParams.get('page'))));
+    useEffect(() => {
+        if (searchParams.get('page'))   dispatch(setPage(Number(searchParams.get('page'))));
+    }, []);
+
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setSearchParams({ page: value.toString() }, { replace: true });
         dispatch(setPage(value))
-        // setPage(value);
     };
     const GET_CHARACTERS = gql(`query GetCharacters {
         characters(page:${page}${search ? ', filter: {name: "' + search + '"}' : ''}) {
@@ -29,9 +29,7 @@ const Characters: React.FC = () => {
             info {pages,count}
         }
     }`);
-    // useEffect(() => {
-    //     if (!searchParams.get('page')) setSearchParams({ page: page.toString() }, { replace: true })
-    // }, [])
+
     const { loading, error, data } = useQuery(GET_CHARACTERS);
     if (error) {
         console.log(error.message)

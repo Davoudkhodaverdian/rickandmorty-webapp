@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setPage, setSearch } from "../../../../app/store/slices/charactersList";
+import { useSearchParams } from "react-router-dom";
 
 const Search: React.FC = () => {
-
+    const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useDispatch();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setPage(1));
+        setSearchParams({page: '1'});
         dispatch(setSearch(event.target.value));
     }
     return (
