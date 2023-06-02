@@ -5,15 +5,18 @@ import { SetURLSearchParams } from "react-router-dom";
 
 interface Props {
     setSearchParams: SetURLSearchParams
+    searchParams: URLSearchParams
 }
 
-const Search: React.FC<Props> = ({setSearchParams}) => {
+const Search: React.FC<Props> = ({ setSearchParams,searchParams }) => {
 
     const dispatch = useDispatch();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setPage(1));
-        setSearchParams({page: '1'});
+
         dispatch(setSearch(event.target.value));
+        setSearchParams({ page: '1', search: event.target.value }, { replace: true });
+
     }
     return (
         <form className="mb-5 mx-auto">
@@ -34,7 +37,7 @@ const Search: React.FC<Props> = ({setSearchParams}) => {
                     </svg>
                 </div>
                 <input className="block p-4 pr-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 outline-none focus:border-purple-600"
-                    type="search" placeholder="search ..." required
+                    type="search" placeholder="search ..." required value={searchParams.get('search')?.toString()}
                     onChange={handleChange}
                 // value={(searchParams.get('title') || '') as string}
                 />

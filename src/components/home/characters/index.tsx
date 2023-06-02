@@ -15,6 +15,7 @@ const Characters: React.FC = () => {
     const page = useSelector((state: RootState) => state.charactersList.page);
     const search = useSelector((state: RootState) => state.charactersList.search);
     const currentPage = searchParams.get('page') ? Number(searchParams.get('page')) : page;
+    const currentSearch = searchParams.get('search') ? searchParams.get('search') : search;
     const dispatch = useDispatch();
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -22,7 +23,7 @@ const Characters: React.FC = () => {
         dispatch(setPage(value))
     };
     const GET_CHARACTERS = gql(`query GetCharacters {
-        characters(page:${currentPage}${search ? ', filter: {name: "' + search + '"}' : ''}) {
+        characters(page:${currentPage}${currentSearch ? ', filter: {name: "' + currentSearch + '"}' : ''}) {
             results {name,image,id,status,species,type,gender,created}
             info {pages,count}
         }
@@ -40,7 +41,7 @@ const Characters: React.FC = () => {
             <div className=" md:max-w-[1000px] m-auto py-6">
                 <div className="my-3"> <h1>find your favorite character</h1></div>
                 <div>
-                    <Search setSearchParams={setSearchParams} />
+                    <Search searchParams={searchParams} setSearchParams={setSearchParams} />
                 </div>
                 {
                     loading ? <div className="h-[500px]"><Loading /> </div> :
