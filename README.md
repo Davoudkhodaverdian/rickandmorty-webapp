@@ -7,7 +7,7 @@ You can click on every character you find and see more information about it.\
 In the main page there are characters.\
 There is a page to show list of locations with their information.\
 There is a page to show list s of episodes with their information.\
-You swich go to the pages by menu of the web.
+You switch go to the pages by menu of the web.
 
 #
 - IDE: Visual Studio Code 

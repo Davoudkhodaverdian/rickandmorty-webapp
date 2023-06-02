@@ -16,7 +16,7 @@ const Characters: React.FC = () => {
     const search = useSelector((state: RootState) => state.charactersList.search);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (searchParams.get('page'))   dispatch(setPage(Number(searchParams.get('page'))));
+        if (searchParams.get('page')) dispatch(setPage(Number(searchParams.get('page'))));
     }, []);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -42,8 +42,8 @@ const Characters: React.FC = () => {
         <div>
             <div className=" md:max-w-[1000px] m-auto py-6">
                 <div className="my-3"> <h1>find your favorite character</h1></div>
-                <div>
-                    <Search />
+                <div> 
+                    <Search setSearchParams={setSearchParams}/>
                 </div>
                 {
                     loading ? <div className="h-[500px]"><Loading /> </div> :
