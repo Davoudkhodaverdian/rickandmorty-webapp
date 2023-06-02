@@ -1,3 +1,17 @@
+# Rick and Morty Web Application
+
+
+![rick-and-morty.](/images/rick-and-morty.webp)\
+In this web application you can search every character in the animation.\
+You can click on every character you find and see more information about it.
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -22,7 +22,7 @@ const Episodes: React.FC = () => {
         <div className="">
             <div className='p-2'>Information of episodes:</div>
             <div className='max-h-[300px] p-3 overflow-auto shadow border-t  border-purple-600'>
-                { data?.episodes?.results.map(({ id, name, episode, created,characters }: Episode) => (
+                { data?.episodes?.results.map(({ id, name, episode, created }: Episode) => (
                         <div key={id} className='border-b py-2 border-purple-200'>
                             <h3>name: {name}</h3>
                             <div>episode :{episode}</div>

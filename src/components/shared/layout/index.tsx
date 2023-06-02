@@ -12,7 +12,12 @@ const Layout = () => {
         <div>
             <div className="bg-slate-200 shadow flex flex-row-reverse md:flex-row justify-between">
 
-                <Link className="p-3 pt-3" to={``}><span>rick and morty web application</span></Link>
+                <Link className=" pl-3 flex " to={``}>
+                    <div className="flex flex-col justify-center">
+                        <img src="/rick-and-morty.webp" alt="rick-and-morty" className="rounded-full max-h-[46px]" />
+                    </div>
+                    <span className="p-3">rick and morty web application</span>
+                </Link>
                 <div className="hidden md:block rounded p-3">
                     <Link className="p-3" to={``}> <span>home</span></Link>
                     <Link className="p-3" to={`locations`}><span>locations</span></Link>
@@ -20,7 +25,7 @@ const Layout = () => {
                 </div>
                 <div className="block md:hidden cursor-pointer transition-all ">
                     <DrawerMui open={open} setOpen={setOpen} />
-                    <div className="overflow-hidden"  onClick={handleOpen}>
+                    <div className="overflow-hidden" onClick={handleOpen}>
                         <div className="space-y-2 p-3 hover:scale-105">
                             <span className="block w-8 h-0.5 rounded bg-purple-600 "></span>
                             <span className="block w-8 h-0.5 rounded bg-purple-600 "></span>
