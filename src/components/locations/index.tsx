@@ -21,7 +21,7 @@ const Locations: React.FC = () => {
     return (
         <div className="">
             <div className='p-2'>Information of locations:</div>
-            <div className='max-h-[300px] p-3 overflow-auto shadow border-t  border-purple-600'>
+            <div className='max-h-[calc(100vh-240px)] p-3 overflow-auto shadow border-t  border-purple-600'>
                 {data?.locations?.results.map(({ id, name, type, dimension, created }: Location) => (
                     <div key={id} className='border-b py-2 border-purple-200'>
                         <h3>{name}</h3>

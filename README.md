@@ -1,15 +1,41 @@
 # Rick and Morty Web Application
 
 
-![rick-and-morty.](/public/images/rick-and-morty.webp)\
+![rick-and-morty.](/images/rick-and-morty.webp)\
 In this web application you can search every character in the animation.\
-You can click on every character you find and see more information about it.
+You can click on every character you find and see more information about it.\
+In the main page there are characters.\
+There is a page to show list of locations with their information.\
+There is a page to show list s of episodes with their information.\
+You swich go to the pages by menu of the web.
 
+#
+- IDE: Visual Studio Code 
 
+- Language: TypeScript, Reactjs
 
+- dependencies:
 
-
-
+- [x] apollo/client: 3.7.15
+- [x] emotion/react: 11.11.0
+- [x] emotion/styled: 11.11.0
+- [x] mui/material: 5.13.3
+- [x] reduxjs/toolkit: 1.9.5
+- [x] testing-library/jest-dom: 5.16.5
+- [x] testing-library/react: 13.4.0
+- [x] testing-library/user-event: 13.5.0
+- [x] types/jest: 27.5.2
+- [x] types/node: 16.18.34
+- [x] types/react: 18.2.7
+- [x] types/react-dom: 18.2.4
+- [x] graphql: 16.6.0
+- [x] react: 18.2.0
+- [x] react-dom: 18.2.0
+- [x] react-redux: 8.0.7
+- [x] react-router-dom: 6.11.2
+- [x] react-scripts: 5.0.1
+- [x] typescript: 4.9.5
+- [x] web-vitals: 2.1.4
 
 
 # Getting Started with Create React App
