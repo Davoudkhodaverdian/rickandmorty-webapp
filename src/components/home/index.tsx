@@ -17,11 +17,10 @@ const Home: React.FC = () => {
     // if (error) return <p>Error : {error.message}</p>;
     // const pagesCount = data?.characters?.info?.pages
     return (
-        <div className="mx-6">
+        <div className="">
             <Fade in={true} timeout={2000}>
                 <div>
                     <div>home page</div>
-                    <div>rick and morty web application</div>
                     {/* {pagesCount > 0 && <Characters pagesCount={pagesCount} />} */}
                     {<Characters />}
                     {/* <Locations/> */}

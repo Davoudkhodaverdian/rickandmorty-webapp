@@ -9,7 +9,7 @@ export interface Episode {
     // The air date of the episode.
     episode?: string
     // The code of the episode.
-    characters?: Character
+    characters?: Character[]
     // List of characters who have been seen in the episode.
     created?: string
     // Time at which the episode was created in the database.

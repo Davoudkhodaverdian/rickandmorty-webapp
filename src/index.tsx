@@ -3,16 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/home';
-import {  ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import client from "./app/apollo/client";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './components/shared/layout';
+import Character from './components/character';
+import NotFound from './components/shared/notFound';
+import Locations from './components/locations';
+import Episodes from './components/episodes';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='character/:slug' element={<Character />} />
+            <Route path='/locations' element={<Locations/>} />
+            <Route path='/episodes' element={<Episodes/>} />
+          </Route>
+          <Route path='*' element={<NotFound />} />
+          <Route path='/404' element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>
 );
