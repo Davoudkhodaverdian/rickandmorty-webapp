@@ -21,9 +21,9 @@ const Characters: React.FC = () => {
             info {pages,count}
         }
     }`);
-    useEffect(() => {
-        if (!searchParams.get('page')) setSearchParams({ page: page.toString() }, { replace: true })
-    }, [])
+    // useEffect(() => {
+    //     if (!searchParams.get('page')) setSearchParams({ page: page.toString() }, { replace: true })
+    // }, [])
     const { loading, error, data } = useQuery(GET_CHARACTERS);
     if (error) return <p>Error : {error.message}</p>;
     const pagesCount = data?.characters?.info?.pages;
@@ -38,7 +38,7 @@ const Characters: React.FC = () => {
                 </div>
                 {
                     loading ? <div className="h-[500px]"><Loading /> </div> :
-                        <div className="grid grid-cols-3 overflow-auto h-[500px]"><Items data={data?.characters?.results} /></div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 overflow-auto h-[500px]"><Items data={data?.characters?.results} /></div>
                 }
                 <div className="m-5">
                     <Pagination count={pagesCount} page={page} onChange={handleChange} />
