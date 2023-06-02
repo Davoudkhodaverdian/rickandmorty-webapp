@@ -14,7 +14,7 @@ const Layout = () => {
 
                 <Link className=" pl-3 flex " to={``}>
                     <div className="flex flex-col justify-center">
-                        <img src="/rick-and-morty.webp" alt="rick-and-morty" className="rounded-full max-h-[46px]" />
+                        <img src="/images/rick-and-morty.webp" alt="rick-and-morty" className="rounded-full max-h-[46px]" />
                     </div>
                     <span className="p-3">rick and morty web application</span>
                 </Link>
