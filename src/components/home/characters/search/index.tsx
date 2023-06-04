@@ -39,12 +39,8 @@ const Search: React.FC<Props> = ({ setSearchParams,searchParams }) => {
                 <input className="block p-4 pr-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 outline-none focus:border-purple-600"
                     type="search" placeholder="search ..." required value={searchParams.get('search')?.toString()}
                     onChange={handleChange}
-                // value={(searchParams.get('title') || '') as string}
                 />
-                {/* <button type="submit"
-                    className="absolute left-2.5 bottom-[7px] px-4 py-2 shadow-2xl rounded bg-purple-600 text-white hover:bg-purple-700 active:bg-purple-800 ">
-                    جستجو
-                </button> */}
+
             </div>
         </form>
     )
