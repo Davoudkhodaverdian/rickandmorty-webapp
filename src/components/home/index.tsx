@@ -1,6 +1,7 @@
 import React from "react";
 import Characters from "./characters";
 import { Fade } from "@mui/material";
+import Title from "./title";
 
 const Home: React.FC = () => {
 
@@ -8,7 +9,7 @@ const Home: React.FC = () => {
         <div className="">
             <Fade in={true} timeout={2000}>
                 <div>
-                    <div>home page</div>
+                    <Title />
                     {<Characters />}
                 </div>
             </Fade>
