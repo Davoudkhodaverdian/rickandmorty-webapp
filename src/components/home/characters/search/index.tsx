@@ -1,21 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setPage, setSearch } from "../../../../app/store/slices/charactersList";
-import { SetURLSearchParams } from "react-router-dom";
+import { SetURLSearchParams, URLSearchParamsInit } from "react-router-dom";
 
 interface Props {
     setSearchParams: SetURLSearchParams
     searchParams: URLSearchParams
 }
 
-const Search: React.FC<Props> = ({ setSearchParams,searchParams }) => {
+const Search: React.FC<Props> = ({ setSearchParams, searchParams }) => {
 
     const dispatch = useDispatch();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setPage(1));
-
+        const searchQuery = event.target.value ? { search: event.target.value } : {};
         dispatch(setSearch(event.target.value));
-        setSearchParams({ page: '1', search: event.target.value }, { replace: true });
+        setSearchParams({ page: '1', ...searchQuery } as URLSearchParamsInit, { replace: true });
 
     }
     return (
@@ -37,7 +37,7 @@ const Search: React.FC<Props> = ({ setSearchParams,searchParams }) => {
                     </svg>
                 </div>
                 <input className="block p-4 pr-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 outline-none focus:border-purple-600"
-                    type="search" placeholder="search ..." required value={searchParams.get('search')?.toString()}
+                    type="search" placeholder="search ..." required value={searchParams.get('search')?.toString() || ''}
                     onChange={handleChange}
                 />
 

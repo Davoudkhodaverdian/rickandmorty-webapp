@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 import { RootState } from "../../../app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setPage } from "../../../app/store/slices/charactersList";
-
+import { URLSearchParamsInit } from "react-router-dom";
 const Characters: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const page = useSelector((state: RootState) => state.charactersList.page);
@@ -19,8 +19,10 @@ const Characters: React.FC = () => {
     const dispatch = useDispatch();
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setSearchParams({ page: value.toString() }, { replace: true });
-        dispatch(setPage(value))
+        const searchQuery = searchParams.get('search') ? { search: searchParams.get('search') } : {};
+        const pageQuery = value.toString() ? { page: value.toString() } : {};
+        setSearchParams({ ...pageQuery, ...searchQuery } as URLSearchParamsInit , { replace: true });
+        dispatch(setPage(value));
     };
     const GET_CHARACTERS = gql(`query GetCharacters {
         characters(page:${currentPage}${currentSearch ? ', filter: {name: "' + currentSearch + '"}' : ''}) {
